@@ -1,72 +1,6 @@
 # TypeScript Up Your Ember.js App
 
-## Session 1: TypeScript Intro
-
-***
-
-## Introductions
-
-<p class="invisible">&nbsp;</p>
-
-* Chris Krycho
-
-* Bill Pullen
-
-* Jon Rossway
-
-Note: Hello, everyone, and welcome to the TypeScript Up Your Ember.js App workshop. I figured I’d start by introducing myself briefly and having my TA Bill introduce himself.
-
-I’m a software engineer at Olo—we do white-label online ordering for restaurants. Our mobile web experience is an Ember.js application with about 20,000 lines of TypeScript. Right now, we are turning that mobile foundation into a responsive, progressive web application that will be _the_ white-label ordering experience at Olo. I’m also one of the maintainers of ember-cli-typescript, and an all-around nerd! We’ve been using TypeScript in our Ember app at Olo since late 2016—_well_ before it was easy or especially useful. But, happily, we’re now at a point where it’s both easy _and_ useful!
-
-Bill?
-
-So now I’d like to get a bit of a feel for where everyone is at in the room. We’re going to cover basically the same material no matter what, but I can pitch my discussion and adjust course and adjust speed depending on what people’s experience levels look like.
-
-* How many of you have written any TypeScript before?
-* How many of you have written any typed language _at all_ before? - C♯ or Java? - Elm, F♯, OCaml, PureScript, Haskell, etc.?
-
-Cool! That’s really helpful, and we’ll make a point to make sure no one gets left behind.
-
-I’ll say this again and again, but I really mean it: if you have a question, if something was confusing, really for any reason at all: stop me, and ask questions. I’ve intentionally left plenty of time for that and everyone in here will learn this better if you _do_ ask.
-
-***
-
-## Schedule
-
-* 9:00&ndash;9:50: **the basics of TypeScript**
-    * 9:50&ndash;10:00: break
-
-* 10:00&ndash;10:50: **converting Todo MVC from JavaScript to TypeScript**
-    * 10:50&ndash;11:00: break
-
-* 11:00&ndash;11:45: **refactoring Todo MVC with TypeScript** (working session)
-
-* 11:45&ndash;12:00: **open discussion**
-
-Note: Before we jump in, let’s talk through the basic approach I’m planning to take, just so everyone is on the same page.
-
-* From now till about 9:45 or 9:50, I’m going to talk through **the basics of TypeScript**. This is going to be kind of “lecture”-style, but _please_ feel free to interrupt with questions. The point of this section is for us to go from _zero_ to a point where the rest of the workshop makes good sense.
-* When we wrap that up, we’ll take a short break, till 10am. Breaks are really important because we all have to stretch and hit the bathroom, but they’re also really important in terms of _learning_. If we just try to crunch through, all of our brains will shut down. So we’ll let ourselves chill a bit, then dive back in.
-* From 10:00 to about 10:50, we’ll work through **converting parts of the canonical “TODO MVC” Ember example app from JavaScript to TypeScript**. This will let us put into practice all the ideas we talk about in the first session. We’ll probably spend about half an hour of that working through a couple of those together, and then the remainder of that block you can work on the rest of the app at your own pace. We’ll be around to help you as you have questions or get stuck.
-* After another break, from 11:00 to about 11:45, we’ll work on **refactoring with TypeScript**, still using the TODO MVC app as our baseline. In a lot of ways, this is where the best parts of using TypeScript will really show up.
-* Finally, we’ll just spend the last 15 minutes on open discussion, questions, comments, etc. – anything Bill and I can answer from working on what is now (kind of hilariously) the largest and oldest Ember _TypeScript_ apps in the world, we’ll be happy to.
-
----
-
-## Just in case...
-
-<p class="invisible">&nbsp;</p>
-
-<https://github.com/chriskrycho/emberconf>
-
-<p class="invisible">&nbsp;</p>
-
-```
-$ git clone https://github.com/chriskrycho/emberconf
-$ yarn
-```
-
-Note: If any of you _have not_ cloned the repository and run `yarn` to get everything set up, this first session is a good time to do that in the background. The link on the whiteboard here will take you straight to it. (https://github.com/chriskrycho/emberconf)
+### Adapted from Chris Krycho's EmberConf 2018 Training
 
 ***
 
@@ -193,12 +127,12 @@ Note: Okay, so assuming that combo sounds like a win, _how_ does TypeScript do t
 <p class="invisible">&nbsp;</p>
 
 ```js
-let myName = "Chris Krycho";
-let myAge = 30;
+let myName = "James Davis";
+let theAnswer = 42;
 let iThinkEmberIsCool = true;
 
 function stringLength(s) {
-  return s.length;
+    return s.length;
 }
 
 let toString = (anything) => `${anything}`;
@@ -215,8 +149,8 @@ Note: We're starting out here with some extremely basic JavaScript. We'll build 
 <p class="invisible">&nbsp;</p>
 
 ```ts
-let myName: string = "Chris Krycho";
-let myAge: number = 30;
+let myName: string = "James Davis";
+let theAnswer: number = 42;
 let iThinkEmberIsCool: boolean = true;
 
 function stringLength(s: string): number {
@@ -244,7 +178,7 @@ We write a variable with a type declaration by adding `: <type name>` after the 
 But we don't actually need almost any of those!
 
 ```ts
-let myName = "Chris";
+let myName = "James Davis";
 let theAnswer = 42;
 let iThinkEmberIsCool = true;
 
@@ -266,7 +200,7 @@ Note: A lot of times, you _won’t_ have to write down types. Anywhere you assig
 <p class="invisible">&nbsp;</p>
 
 ```js
-let myName = "Chris";
+let myName = "James";
 let theAnswer = 42;
 let iThinkEmberIsCool = true;
 
@@ -288,7 +222,7 @@ Note: So for direct comparison, again: here's the base JavaScript…
 <p class="invisible">&nbsp;</p>
 
 ```ts
-let myName = "Chris";
+let myName = "James";
 let theAnswer = 42;
 let iThinkEmberIsCool = true;
 
@@ -409,8 +343,8 @@ In JavaScript:
 
 
 let me = {
-  name: "Chris",
-  age: 30,
+  name: "James",
+  age: 38,
   likesEmber: true,
 };
 ```
@@ -433,15 +367,15 @@ let me: {
   age: number;
   likesEmber: boolean;
 } = {
-  name: "Chris",
-  age: 30,
+  name: "James",
+  age: 38,
   likesEmber: true,
 };
 ```
 
 Note: if we write out the type inline like we have been so far with other types, it looks like this.
 
-The big thing to notice here is the way that the type looks a lot like the way you write an instance of the type. Instead of putting the *value* associated with the key, though, you put the *type* there. So instead of `name: "Chris"`, we have `name: string` in the type definition.
+The big thing to notice here is the way that the type looks a lot like the way you write an instance of the type. Instead of putting the *value* associated with the key, though, you put the *type* there. So instead of `name: "James"`, we have `name: string` in the type definition.
 
 ---
 
@@ -459,8 +393,8 @@ type JavaScripter = {
 }
 
 let me: JavaScripter = {
-  name: "Chris",
-  age: 30,
+  name: "James",
+  age: 38,
   likesEmber: true,
 };
 ```
@@ -483,8 +417,8 @@ In TypeScript (if we don't need to name the type):
 
 
 let me = {
-  name: "Chris",
-  age: 30,
+  name: "James",
+  age: 38,
   likesEmber: true,
 };
 ```
@@ -517,11 +451,8 @@ function getUserDOM(userName: string) {
   return document.querySelector(`#${userName}`);
 }
 
-
-
-
 let userDOM = getUserDOM('chris');
-console.log(result.innerText);
+console.log(userDOM.innerText);
 ```
 
 Note: TypeScript can infer a _lot_. It’ll even infer more interesting types we haven’t talked about yet, like _union_ types. 
@@ -538,11 +469,11 @@ function getUserDOM(userName: string) {
   return document.querySelector(`#${userName}`);
 }
 
-// Type error! We haven't checked whether `result` is a string or a
-// number, so TS will tell us we need to figure that out before we
+// Type error! We haven't checked whether `userDOM` is an Element or
+// null, so TS will tell us we need to figure that out before we
 // try to do something with it.
 let userDOM = getUserDOM('chris');
-console.log(result.textContent);
+console.log(userDOM.innerText);
 ```
 
 Note: Here, TypeScript knows that we’re returning _either_ an `HTMLElement` *or* `null`. And when we go to use it, we’ll have to check what the type is, or TS will yell at us.
@@ -971,8 +902,8 @@ function sayHello(p: Person) {
 }
 
 const person = {
-  name: 'Chris Krycho',
-  favoriteHobby: 'running',
+  name: 'James Davis',
+  favoriteHobby: 'music',
 };
 ```
 
@@ -994,8 +925,8 @@ function sayHello(p: Person) {
 }
 
 const person = {
-  name: 'Chris Krycho',
-  favoriteHobby: 'running',
+  name: 'James Davis',
+  favoriteHobby: 'music',
 };
 
 sayHello(person);
@@ -1425,7 +1356,7 @@ interface HasMass { mass: number }
 class LivingThing { age: number }
 
 type CorporealBeing = HasName & HasMass & LivingThing;
-let me: CorporealBeing = { name: "Chris", mass: 72, age: 30 };
+let me: CorporealBeing = { name: "James", mass: 72, age: 38 };
 ```
 
 Note: An _intersection_ type is the counterpart to a _union_ type. Instead of saying a value can be “this _or_ that” it says the value is “this _and_ that.” This is kind of like doing `extends` with an `interface`… except that you can just mix and match them however you want. (And notice that you can do intersections with any kind of TS shape!)
@@ -1472,7 +1403,7 @@ Note: TypeScript also lets use define _tuple_ types. These look a little like ar
 type NameAndAge = [string, number];
 
 // valid! ✅
-let good: NameAndAge = ["Chris Krycho", 30];
+let good: NameAndAge = ["James Davis", 38];
 ```
 
 Note: then this would be valid…
@@ -1487,11 +1418,11 @@ Note: then this would be valid…
 type NameAndAge = [string, number];
 
 // valid! ✅
-let good: NameAndAge = ["Chris Krycho", 30];
+let good: NameAndAge = ["James Davis", 38];
 
 // type errors! ❌
-let bad1: NameAndAge = [30, "Chris Krycho"];
-let bad2: NameAndAge = ["Chris Krycho", 30, { is: 'a nerd' }]
+let bad1: NameAndAge = [38, "James Davis"];
+let bad2: NameAndAge = ["James Davis", 38, { is: 'a nerd' }]
 ```
 
 Note: … but these would _not_! because the order is wrong in the first one, and the second has too many values.
@@ -1530,11 +1461,11 @@ type StrsAndNums = (string | number)[];     // shorthand
 type StrsAndNums = Array<string | number>;  // generic
 
 // valid! ✅
-let good1: StrsAndNums = ["Chris Krycho", 30];
-let good2: StrsAndNums = [30, "Chris Krycho", 59, "potato", "wat"];
+let good1: StrsAndNums = ["James Davis", 38];
+let good2: StrsAndNums = [38, "James Davis", 59, "potato", "wat"];
 
 // type error! ❌
-let bad: StrsAndNums = ["Chris Krycho", 30, { is: 'a nerd' }];
+let bad: StrsAndNums = ["James Davis", 38, { is: 'a nerd' }];
 ```
 
 Note: It's worth contrasting these with arrays, where you can have mixed types, but the order is not fixed. Here, there is no set length, and they can come in any order. They just still have to be all the set of types we declared, so you still can't throw in *random* types.
